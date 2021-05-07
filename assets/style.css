@@ -1,0 +1,45 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, #249688 0px, #249688 15vh, #DADBD4 15vh, #DADBD4 100vh);
+}
+
+main{
+  width: 80%;
+  min-width: 900px;
+  height: 95%;
+  background-color: azure;
+}
+
+aside{
+  height: 100%;
+  float: left;
+}
+
+aside.side-menu{
+  width: 35%;
+  background-color: wheat;
+}
+
+aside.message{
+  width: 65%;
+  background-color: brown;
+}
+
+aside header, aside footer{
+  height: 80px;
+  background-color: yellow;
+}
+
+aside section{
+  height: calc(100% - 160px);
+}
