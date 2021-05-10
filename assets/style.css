@@ -13,6 +13,57 @@
   background-image: linear-gradient(to bottom, #249688 0px, #249688 15vh, #DADBD4 15vh, #DADBD4 100vh);
 }
 
+.f-left{
+  float: left;
+  display: inline-block;
+}
+
+.text-small{
+  color: #71787A;
+  font-size: 14px;
+}
+
+/* box format standard circle and text aside */
+.box-format{
+  display: flex;
+  align-items: center;
+}
+
+.box-format div{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* margin: 0 10px; */
+  text-align: center;
+  background-color: white;
+  vertical-align: middle;
+}
+
+.box-format div img{
+  width: 60px;
+  border-radius: 50%;
+}
+
+.box-format div i{
+  line-height: 60px;
+  font-size: 25px;
+  color: #8EDAFC;
+}
+
+.box-format p{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.box-format p span{
+  display: block;
+}
+
+i{
+  cursor: pointer;
+}
+
 main{
   width: 80%;
   min-width: 900px;
@@ -25,21 +76,124 @@ aside{
   float: left;
 }
 
-aside.side-menu{
-  width: 35%;
-  background-color: wheat;
-}
-
-aside.message{
-  width: 65%;
-  background-color: brown;
-}
-
 aside header, aside footer{
   height: 80px;
-  background-color: yellow;
+  background-color: #EAEAEA;
 }
 
 aside section{
   height: calc(100% - 160px);
+}
+
+aside header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+aside header i{
+  color: #B1B1B1;
+  margin-right: 10px;
+}
+
+aside.side-menu{
+  width: 35%;
+  background-color: #FAFAFA;
+}
+
+aside.side-menu div.notifica{
+  height: 85px;
+  background-color: #8EDAFC;
+  padding: 0 20px;
+}
+aside.side-menu div.notifica span:last-child{
+ text-decoration: underline;
+}
+aside.side-menu section{
+  height: calc(100% - 165px);
+  padding: 5px;
+  background-color: #FAFAFA;
+}
+
+aside.side-menu section div.search{
+  height: 30px;
+  background-color: white;
+  border: 1px solid #F5F5F5;
+}
+
+aside.side-menu section div.search button, aside.side-menu section div.search input{
+  border: none;
+  line-height: 29px;
+}
+
+aside.side-menu section div.search button{
+  padding: 0 10px;
+  width: 15%;
+  color: #B7BABC;
+  background-color: white;
+}
+aside.side-menu section div.search input{
+  padding: 0 10px;
+  width: 85%;
+  outline: none;
+}
+
+aside.side-menu div.contacts{
+  height: calc(100% - 35px);
+  margin-top: 5px;
+  background-color: white;
+  border-right: 1px solid #EBEBEB;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+aside.side-menu div.contacts .box-format{
+  padding: 5px;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+aside.side-menu div.contacts .box-format:last-child{
+  border: none;
+}
+
+aside.messages{
+  width: 65%;
+}
+
+aside.messages header, aside.message footer{
+  border-left: 1px solid #B1B1B1;
+}
+
+aside.messages section{
+  padding: 10px 20px;
+  background-image: url('img/mine.jpg');
+}
+
+aside.messages .box{
+  min-height: 40px;
+  margin-bottom: 15px;
+  background-color: teal;
+}
+
+aside.messages .box .box-green, aside.messages .box .box-white{
+  position: relative;
+  min-height: 40px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+aside.messages .box .box-green{
+  float: right;
+  background-color: #D5F9B9;
+}
+aside.messages .box .box-white{
+  background-color: white;
+}
+
+aside.messages .box .box-date{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 10px;
 }
