@@ -99,7 +99,7 @@ const app = new Vue({
 
     //milestone 3
     pushText(index){
-      console.log(this.strText);
+
       this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
       this.contacts[index].messages.push({
         date: this.now,
@@ -130,11 +130,8 @@ const app = new Vue({
 
         const subName = value.name.substring(0, maxLength).toLowerCase();
 
-        if (str === subName){
-          value.visible = true;
-        }else{
-          value.visible = false;
-        }
+        //condizione che rende visibile se c'è nome
+        (str === subName) ? value.visible = true : value.visible = false ;
         
       });
 
