@@ -24,8 +24,10 @@
     <!-- main -->
     <main>
 
+      <!-- aside side-menu -->
       <aside class="side-menu f-left">
         
+        <!-- header my contact -->
         <header>
           <div class="box-format">
             <div>
@@ -39,7 +41,9 @@
             <i class="fas fa-ellipsis-v"></i>
           </div>
         </header>
+        <!-- /header my contact -->
 
+        <!-- notification box -->
         <div class="notifica box-format">
           <!-- <i class="fas fa-bell"></i> -->
           <div>
@@ -50,38 +54,36 @@
             <span class="text-small">Attiva notifiche desktop</span>
           </p>
         </div>
+        <!-- /notification box -->
 
+        <!-- section search&contacts -->
         <section>
 
           <div class="search">
-            <button class="f-left" @click="seehere"><i class="fas fa-search"></i></button>
+            <button class="f-left"><i class="fas fa-search"></i></button>
             <input  class="f-left" type="text" placeholder="Cerca o inizia una nuova chat">
           </div>
 
           <div class="contacts">
-            <div class="box-format active">
-              <div>
-                <img src="assets/img/avatar_1.jpg" alt="">
-              </div>
-              <p>Michele</p>
-            </div>
 
-            <div class="box-format"
+            <button class="box-format"
               v-for="(contact, index) in contacts"
+              @click="changeAvatar(index)"
+              :class="avatarActive === index ? 'active' : null"
             >
               <div>
-                <img src="assets/img/avatar_1.jpg" alt="">
+                <img :src="`assets/img/avatar${contact.avatar}.jpg`" :alt="contact.name">
               </div>
-              <p>{{contact[index].name}}</p>
-            </div>
-
+              <p>{{contact.name}}</p>
+            </button>
 
           </div>
 
-
         </section>
+        <!-- /section search&contacts -->
 
       </aside>
+      <!-- /aside side-menu -->
 
       <!-- aside message -->
       <aside class="messages f-left">
@@ -89,10 +91,11 @@
         <header>
           <div class="box-format">
             <div>
-              <img src="assets/img/avatar_1.jpg" alt="">
+              <img :src="`assets/img/avatar${contacts[avatarActive].avatar}.jpg`"
+                :alt="contacts[avatarActive].name">
             </div>
             <p>
-              <span>Michele</span>
+              <span>{{ contacts[avatarActive].name }}</span>
               <span class="text-small">Ultimo accesso alle</span>
             </p>
           </div>
@@ -103,32 +106,29 @@
           </div>
         </header>
 
+        <!-- section visualizza messaggi -->
         <section>
-          <div class="box">
-            <div class="sent f-right">
-              <p>Hai portato a spasso il cane?</p>
-              <div class="box-date">yyyy</div>
-            </div>
-          </div>
-          <div class="box">
-            <div class="sent f-right">
-              <p>Ricordati di dargli da mangiare</p>
-              <div class="box-date">yyyy</div>
-            </div>
-          </div>
-          <div class="box">
-            <div class="recieved f-left">
-              <p>Tutto fatto!</p>
-              <div class="box-date">yyyy</div>
+          <div class="box"
+          v-for="message in contacts[avatarActive].messages">
+            <div class="f-right"
+              :class="message.status === 'sent' ? 'sent' : 'recieved'">
+              <p>{{ message.text }}</p>
+              <div class="box-date">{{ contacts[avatarActive].messages[0].date }}</div>
             </div>
           </div>
         </section>
+        <!-- /section visualizza messaggi -->
 
+        <!-- footer inserisci messaggi -->
         <footer>
           <i class="far fa-smile"></i>
-          <input type="text" placeholder="Scrivi un messaggio">
+          <input type="text" 
+            placeholder="Scrivi un messaggio" 
+            @keyup.enter="pushText(contacts[avatarActive].messages)"
+            v-model="strText">
           <i class="fas fa-microphone"></i>
         </footer>
+        <!-- /footer inserisci messaggi -->
         
       </aside>
       <!-- /aside message -->
@@ -141,7 +141,10 @@
   <!-- /app -->
 
 
-
+  <!-- <script src="path/to/dayjs/dayjs.min.js"></script>
+  <script>
+    dayjs().format()
+  </script> -->
   <script src="assets/script.js"></script>
 </body>
 </html>

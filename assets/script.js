@@ -1,6 +1,6 @@
 
 const app = new Vue({
-  ul: '#app',
+  el: '#app',
   data: {
     contacts: [
       {
@@ -88,12 +88,28 @@ const app = new Vue({
       },
     ],
     avatarActive: 0,
+    strText: '',
 
   },//and of data
   methods: {
-    seehere(){
-      console.log("ciao");
+    changeAvatar(index){
+      this.avatarActive = index;
     },
+    pushText(positon){
+      console.log(this.strText);
+      //this.now = dayjs().format('dd/MM/YYYY HH:mm:ss');
+      console.log({
+        date: '',
+        text: this.strText,
+        status: 'sent'
+      })
+
+      //this.positon.push(
+    }
+  },
+
+  mounted(){
+    //console.log("siamo qui");
   }
 
 });
