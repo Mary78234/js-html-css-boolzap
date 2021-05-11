@@ -60,14 +60,25 @@
         <section>
 
           <div class="search">
-            <button class="f-left"><i class="fas fa-search"></i></button>
-            <input  class="f-left" type="text" placeholder="Cerca o inizia una nuova chat">
+            <button class="f-left"
+              @click="searchUser"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+            <label class="search-label" for="search"></label>
+            <input  class="f-left" 
+              type="text" 
+              placeholder="Cerca o inizia una nuova chat"
+              v-model="strSearch"
+              @keyup.enter="searchUser"
+              >
           </div>
 
           <div class="contacts">
 
-            <button class="box-format"
+            <div class="box-format"
               v-for="(contact, index) in contacts"
+              v-show ="contact.visible"
               @click="changeAvatar(index)"
               :class="avatarActive === index ? 'active' : null"
             >
@@ -75,7 +86,7 @@
                 <img :src="`assets/img/avatar${contact.avatar}.jpg`" :alt="contact.name">
               </div>
               <p>{{contact.name}}</p>
-            </button>
+            </div>
 
           </div>
 
@@ -108,14 +119,16 @@
 
         <!-- section visualizza messaggi -->
         <section>
-          <div class="box"
-          v-for="message in contacts[avatarActive].messages">
-            <div class="f-right"
-              :class="message.status === 'sent' ? 'sent' : 'recieved'">
-              <p>{{ message.text }}</p>
-              <div class="box-date">{{ contacts[avatarActive].messages[0].date }}</div>
+          <!-- row con utilizzo del template così non vedo la parte di vue per rendere il codice più leggibile-->
+          <template v-for="message in contacts[avatarActive].messages">
+            <div class="box">
+              <!-- small box with message -->
+              <div :class="message.status === 'sent' ? 'sent' : 'recieved'">
+                <p>{{ message.text }}</p>
+                <div class="box-date">{{ message.date }}</div>
+              </div>
             </div>
-          </div>
+          </template>
         </section>
         <!-- /section visualizza messaggi -->
 
@@ -124,7 +137,7 @@
           <i class="far fa-smile"></i>
           <input type="text" 
             placeholder="Scrivi un messaggio" 
-            @keyup.enter="pushText(contacts[avatarActive].messages)"
+            @keyup.enter="pushText(avatarActive)"
             v-model="strText">
           <i class="fas fa-microphone"></i>
         </footer>
@@ -140,11 +153,9 @@
   </div>
   <!-- /app -->
 
-
-  <!-- <script src="path/to/dayjs/dayjs.min.js"></script>
-  <script>
-    dayjs().format()
-  </script> -->
+  <!-- dayjs -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/it.js"></script>
   <script src="assets/script.js"></script>
 </body>
 </html>

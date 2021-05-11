@@ -89,23 +89,60 @@ const app = new Vue({
     ],
     avatarActive: 0,
     strText: '',
+    strSearch: ''
 
   },//and of data
   methods: {
     changeAvatar(index){
       this.avatarActive = index;
     },
-    pushText(positon){
+
+    //milestone 3
+    pushText(index){
       console.log(this.strText);
-      //this.now = dayjs().format('dd/MM/YYYY HH:mm:ss');
-      console.log({
-        date: '',
+      this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
+      this.contacts[index].messages.push({
+        date: this.now,
         text: this.strText,
         status: 'sent'
       })
 
-      //this.positon.push(
-    }
+      setTimeout(() => {
+        this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
+        this.contacts[index].messages.push({
+          date: this.now,
+          text: 'ok',
+          status: 'received'
+        })
+      }, 1000);
+
+      this.strText = '';
+
+    },
+
+    //milestone 4
+    searchUser(){
+
+      const str = this.strSearch.trim().toLowerCase();
+      const maxLength = str.length;
+
+      this.contacts.forEach((value)=>{
+
+        const subName = value.name.substring(0, maxLength).toLowerCase();
+
+        if (str === subName){
+          value.visible = true;
+        }else{
+          value.visible = false;
+        }
+        
+      });
+
+      this.strSearch = '';
+
+    },//fine search
+    
+   
   },
 
   mounted(){

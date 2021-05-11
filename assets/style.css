@@ -156,10 +156,7 @@ aside.side-menu div.contacts{
   background-color: white;
   border-right: 1px solid #EBEBEB;
   border-bottom: 1px solid #EBEBEB;
-}
-
-aside.side-menu div.contacts button{
-  width: 100%;
+  overflow-y: auto;
 }
 
 aside.side-menu div.contacts .box-format{
@@ -186,6 +183,7 @@ aside.messages header, aside.message footer{
 aside.messages section{
   padding: 4% 8%;
   background-image: url('img/mine.jpg');
+  overflow-y: scroll;
 }
 
 aside.messages .box{
@@ -200,6 +198,7 @@ aside.messages .box .sent, aside.messages .box .recieved{
   max-width: 70%;
   border-radius: 10px;
   padding: 10px 15px 20px;
+  /* clear: both; si può usare anche questo se non sono dentro a box */
 }
 
 aside.messages .box .sent{
