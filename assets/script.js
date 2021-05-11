@@ -86,7 +86,14 @@ const app = new Vue({
           }
         ],
       },
-    ]
+    ],
+    avatarActive: 0,
+
+  },//and of data
+  methods: {
+    seehere(){
+      console.log("ciao");
+    },
   }
 
 });

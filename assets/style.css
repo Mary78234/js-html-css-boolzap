@@ -15,7 +15,9 @@
 
 .f-left{
   float: left;
-  display: inline-block;
+}
+.f-right{
+  float: right;
 }
 
 .text-small{
@@ -64,6 +66,10 @@ i{
   cursor: pointer;
 }
 
+input, button{
+  border: none;
+}
+
 main{
   width: 80%;
   min-width: 900px;
@@ -73,7 +79,6 @@ main{
 
 aside{
   height: 100%;
-  float: left;
 }
 
 aside header, aside footer{
@@ -124,18 +129,16 @@ aside.side-menu section div.search{
 }
 
 aside.side-menu section div.search button, aside.side-menu section div.search input{
-  border: none;
+  padding: 0 10px;
   line-height: 29px;
 }
 
 aside.side-menu section div.search button{
-  padding: 0 10px;
   width: 15%;
   color: #B7BABC;
   background-color: white;
 }
 aside.side-menu section div.search input{
-  padding: 0 10px;
   width: 85%;
   outline: none;
 }
@@ -150,11 +153,15 @@ aside.side-menu div.contacts{
 
 aside.side-menu div.contacts .box-format{
   padding: 5px;
-  border-bottom: 1px solid #EBEBEB;
+  border-bottom: 1px solid #F4F5F5;
 }
 
 aside.side-menu div.contacts .box-format:last-child{
   border: none;
+}
+
+aside.side-menu div.contacts .box-format.active{
+  background-color: #F4F5F5;
 }
 
 aside.messages{
@@ -166,34 +173,54 @@ aside.messages header, aside.message footer{
 }
 
 aside.messages section{
-  padding: 10px 20px;
+  padding: 4% 8%;
   background-image: url('img/mine.jpg');
 }
 
 aside.messages .box{
   min-height: 40px;
   margin-bottom: 15px;
-  background-color: teal;
 }
 
-aside.messages .box .box-green, aside.messages .box .box-white{
+aside.messages .box .sent, aside.messages .box .recieved{
   position: relative;
   min-height: 40px;
-  width: 100px;
+  min-width: 40%;
+  max-width: 70%;
   border-radius: 10px;
+  padding: 10px 15px 20px;
 }
 
-aside.messages .box .box-green{
-  float: right;
+aside.messages .box .sent{
   background-color: #D5F9B9;
 }
-aside.messages .box .box-white{
+aside.messages .box .recieved{
   background-color: white;
 }
 
 aside.messages .box .box-date{
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 6px;
+  right: 6px;
+  color: #71787A;
   font-size: 10px;
+}
+
+aside.messages footer{
+  padding: 10px 0;
+  color: #6D7477;
+}
+
+aside.messages footer i{
+  width: 9%;
+  text-align: center;
+  font-size: 25px;
+}
+
+aside.messages footer input{
+  min-height: 60px;
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 18px;
 }

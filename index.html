@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- vue -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <!-- fontawsome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-  <link rel="stylesheet" href="assets/style.css">
+  <!-- font -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <!-- style -->
+  <link rel="stylesheet" href="assets/style.css">
   <title>Document</title>
 </head>
 <body>
@@ -20,7 +24,7 @@
     <!-- main -->
     <main>
 
-      <aside class="side-menu">
+      <aside class="side-menu f-left">
         
         <header>
           <div class="box-format">
@@ -50,23 +54,25 @@
         <section>
 
           <div class="search">
-            <button class="f-left"><i class="fas fa-search"></i></button>
+            <button class="f-left" @click="seehere"><i class="fas fa-search"></i></button>
             <input  class="f-left" type="text" placeholder="Cerca o inizia una nuova chat">
           </div>
 
           <div class="contacts">
-            <div class="box-format">
+            <div class="box-format active">
               <div>
                 <img src="assets/img/avatar_1.jpg" alt="">
               </div>
               <p>Michele</p>
             </div>
 
-            <div class="box-format">
+            <div class="box-format"
+              v-for="(contact, index) in contacts"
+            >
               <div>
                 <img src="assets/img/avatar_1.jpg" alt="">
               </div>
-              <p>Michele</p>
+              <p>{{contact[index].name}}</p>
             </div>
 
 
@@ -78,7 +84,7 @@
       </aside>
 
       <!-- aside message -->
-      <aside class="messages">
+      <aside class="messages f-left">
 
         <header>
           <div class="box-format">
@@ -99,26 +105,30 @@
 
         <section>
           <div class="box">
-            <div class="box-green">
-              xx
+            <div class="sent f-right">
+              <p>Hai portato a spasso il cane?</p>
               <div class="box-date">yyyy</div>
             </div>
           </div>
           <div class="box">
-            <div class="box-green">
-              xx
+            <div class="sent f-right">
+              <p>Ricordati di dargli da mangiare</p>
               <div class="box-date">yyyy</div>
             </div>
           </div>
           <div class="box">
-            <div class="box-white">
-              xx
+            <div class="recieved f-left">
+              <p>Tutto fatto!</p>
               <div class="box-date">yyyy</div>
             </div>
           </div>
         </section>
 
-        <footer></footer>
+        <footer>
+          <i class="far fa-smile"></i>
+          <input type="text" placeholder="Scrivi un messaggio">
+          <i class="fas fa-microphone"></i>
+        </footer>
         
       </aside>
       <!-- /aside message -->
