@@ -89,7 +89,8 @@ const app = new Vue({
     ],
     avatarActive: 0,
     strText: '',
-    strSearch: ''
+    strSearch: '',
+    lastUserAccess: '',
 
   },//and of data
   methods: {
@@ -117,26 +118,24 @@ const app = new Vue({
       this.contacts[this.avatarActive].messages.push({
         date: this.now,
         text: text,
-        status: status
+        status: status,
       });
     },
 
     //milestone 4
     searchUser(){
-
       const str = this.strSearch.toLowerCase();
-      const maxLength = str.length;
+      //console.log(str);
 
       this.contacts.forEach((value)=>{
+        const oneName = value.name.toLowerCase();
 
-        const subName = value.name.substring(0, maxLength).toLowerCase();
-
-        //condizione che rende visibile il contatto se il nome inizia con la stringa inserita
-        (str === subName) ? value.visible = true : value.visible = false ;
+        //condizione che rende visibile il contatto se il nome contiene con la stringa inserita
+        (oneName.includes(str)) ? value.visible = true : value.visible = false ;
         
       });
 
-      this.strSearch = '';
+      //this.strSearch = '';
 
     },//fine search
     
@@ -168,7 +167,8 @@ const app = new Vue({
 
     adesso(){
       this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
-      return this.now
+      lastUserAccess = this.now;
+      return lastUserAccess;
     }
 
    
