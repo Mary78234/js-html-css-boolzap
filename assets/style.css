@@ -160,6 +160,7 @@ aside.side-menu div.contacts{
 }
 
 aside.side-menu div.contacts .box-format{
+  position: relative;
   padding: 5px;
   border-bottom: 1px solid #F4F5F5;
 }
@@ -170,6 +171,20 @@ aside.side-menu div.contacts .box-format:last-child{
 
 aside.side-menu div.contacts .box-format.active{
   background-color: #F4F5F5;
+}
+
+aside.side-menu div.contacts .box-format .date{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: gray;
+  font-size: 12px;
+}
+
+aside.side-menu div.contacts .box-format p span{
+  display: block;
+  padding: 5px 0;
+  font-size: 12px;
 }
 
 aside.messages{

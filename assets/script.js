@@ -98,39 +98,40 @@ const app = new Vue({
     },
 
     //milestone 3
-    pushText(index){
+    pushText(){
 
-      this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
-      this.contacts[index].messages.push({
-        date: this.now,
-        text: this.strText,
-        status: 'sent'
-      })
-
-      setTimeout(() => {
-        this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
-        this.contacts[index].messages.push({
-          date: this.now,
-          text: 'ok',
-          status: 'received'
-        })
-      }, 1000);
+      if(this.strText.length > 0){
+        this.sentMess(this.strText, 'sent');
+      }
 
       this.strText = '';
+      
+      setTimeout(() => {
+        this.sentMess('ok', 'received');
+      }, 1000);
 
+    },
+
+    sentMess(text, status){
+      this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
+      this.contacts[this.avatarActive].messages.push({
+        date: this.now,
+        text: text,
+        status: status
+      });
     },
 
     //milestone 4
     searchUser(){
 
-      const str = this.strSearch.trim().toLowerCase();
+      const str = this.strSearch.toLowerCase();
       const maxLength = str.length;
 
       this.contacts.forEach((value)=>{
 
         const subName = value.name.substring(0, maxLength).toLowerCase();
 
-        //condizione che rende visibile se c'è nome
+        //condizione che rende visibile il contatto se il nome inizia con la stringa inserita
         (str === subName) ? value.visible = true : value.visible = false ;
         
       });
@@ -139,6 +140,32 @@ const app = new Vue({
 
     },//fine search
     
+    lastAccess(index){
+      //messaggi dell'utente con index fornito
+      let msg = this.contacts[index].messages;
+      let recDate = '';
+
+      //ciclo di messaggi, salvo la data di quello ricevuto
+      msg.forEach((value)=>{
+        if(value.status === 'received') {
+          recDate = value.date;
+        }; 
+      });
+      //invio l'ultimo salvato 
+      return recDate;
+    },
+
+    lastMess(index){
+      //visualizzare i primi 30 caratteri del messaggio se maggiore aggiungere '...'
+      let msg = this.contacts[index].messages;
+      if(msg[msg.length-1].text.length > 30){
+        return msg[msg.length-1].text.slice(0,30) + '...';
+      }else{
+        return msg[msg.length-1].text;
+      }
+
+    },
+
    
   },
 

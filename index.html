@@ -69,7 +69,7 @@
             <input  class="f-left" 
               type="text" 
               placeholder="Cerca o inizia una nuova chat"
-              v-model="strSearch"
+              v-model.trim="strSearch"
               @keyup.enter="searchUser"
               >
           </div>
@@ -85,7 +85,8 @@
               <div>
                 <img :src="`assets/img/avatar${contact.avatar}.jpg`" :alt="contact.name">
               </div>
-              <p>{{contact.name}}</p>
+              <p>{{contact.name}} <span>{{ lastMess(index) }} </span></p>
+              <p class="date">{{ lastAccess(index) }}</p>
             </div>
 
           </div>
@@ -107,7 +108,7 @@
             </div>
             <p>
               <span>{{ contacts[avatarActive].name }}</span>
-              <span class="text-small">Ultimo accesso alle</span>
+              <span class="text-small">Ultimo accesso : {{ lastAccess(avatarActive) }}</span>
             </p>
           </div>
           <div>
@@ -137,8 +138,8 @@
           <i class="far fa-smile"></i>
           <input type="text" 
             placeholder="Scrivi un messaggio" 
-            @keyup.enter="pushText(avatarActive)"
-            v-model="strText">
+            @keyup.enter="pushText"
+            v-model.trim="strText">
           <i class="fas fa-microphone"></i>
         </footer>
         <!-- /footer inserisci messaggi -->
@@ -153,9 +154,13 @@
   </div>
   <!-- /app -->
 
+
+
   <!-- dayjs -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+  <!-- dayjs in italiano -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/it.js"></script>
+  <!-- collegamento script -->
   <script src="assets/script.js"></script>
 </body>
 </html>
