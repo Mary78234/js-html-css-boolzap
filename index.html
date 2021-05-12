@@ -33,7 +33,10 @@
             <div>
               <img src="assets/img/avatar_io.jpg" alt="">
             </div>
-            <p>Nome Utente</p>
+            <p>
+            <span>Nome Utente</span>
+              <span class="text-small">Ultimo accesso : {{ adesso() }}</span>
+            </p>
           </div>
           <div>
             <i class="fas fa-circle-notch"></i>
@@ -85,7 +88,10 @@
               <div>
                 <img :src="`assets/img/avatar${contact.avatar}.jpg`" :alt="contact.name">
               </div>
-              <p>{{contact.name}} <span>{{ lastMess(index) }} </span></p>
+              <p>
+                <span>{{contact.name}}</span>
+                <span>{{ lastMess(index) }}</span>
+              </p>
               <p class="date">{{ lastAccess(index) }}</p>
             </div>
 

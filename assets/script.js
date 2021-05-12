@@ -166,6 +166,11 @@ const app = new Vue({
 
     },
 
+    adesso(){
+      this.now = dayjs().format('DD/MM/YYYY HH:mm:ss');
+      return this.now
+    }
+
    
   },
 
