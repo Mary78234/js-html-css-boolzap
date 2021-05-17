@@ -84,7 +84,7 @@
               v-show ="contact.visible"
               @click="changeAvatar(index)"
               :class="avatarActive === index ? 'active' : null"
-            >
+            ><!-- al posto di v-show="" si può usare anche v-if=""-->
               <div>
                 <img :src="`assets/img/avatar${contact.avatar}.jpg`" :alt="contact.name">
               </div>
